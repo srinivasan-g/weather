@@ -1,0 +1,19 @@
+<table class="table">
+  <thead class="thead-dark" *ngIf="tableHeardelist.length">
+  <tr>
+    <th scope="col">City</th>
+    <th scope="col"  *ngFor="let header of tableHeardelist; let i = index">{{header.name}} {{header.day}}</th>
+  </tr>
+  </thead>
+  <tbody>
+      <tr *ngIf="!tableHeardelist.length" >
+          <td  class="text-center" colspan="4" scope="row" > - No Result - </td>
+      </tr>
+  <tr *ngFor="let item of queryList; let i = index" >
+      <td scope="row">{{item.name}}</td>
+      <td *ngFor="let items of item.data; let i = index">
+        {{items.main.temp - 273.15 | number:'1.0-0'}}&deg;
+      </td>
+  </tr>
+  </tbody>
+</table>
